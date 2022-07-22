@@ -7,7 +7,7 @@ export type ClientConfig = {
 
 export type Message = {
     category: number;
-    payload:Uint8Array;
+    body: string;
 }
 
 export class Client {
@@ -24,10 +24,10 @@ export class Client {
         this.#wsConn.send(JSON.stringify(m))
     }
 
-    sendCustomEvent(payload: Uint8Array) {
+    sendCustomEvent(body: string) {
         this.#send({
             category: categories.custom,
-            payload
+            body
         })
     }
 }
