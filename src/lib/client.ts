@@ -2,6 +2,7 @@ import { categories } from "./categories";
 
 export type ClientConfig = {
     serverAddr: string;
+    siteId: string;
 }
 
 export type Message = {
