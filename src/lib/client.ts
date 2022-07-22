@@ -11,17 +11,17 @@ export type Message = {
 }
 
 export class Client {
-    wsConn: WebSocket;
+    #wsConn: WebSocket;
 
     constructor(config: ClientConfig) {
-        this.wsConn = new WebSocket(config.serverAddr, "ws")
+        this.#wsConn = new WebSocket(config.serverAddr, "ws")
     }
 
     #send(m: Message) {
-        if (this.wsConn.readyState !== 1) {
+        if (this.#wsConn.readyState !== 1) {
             throw new Error("websocket connection is not ready to send data")
         }
-        this.wsConn.send(JSON.stringify(m))
+        this.#wsConn.send(JSON.stringify(m))
     }
 
     sendCustomEvent(payload: Uint8Array) {
